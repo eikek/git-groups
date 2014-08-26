@@ -211,7 +211,7 @@ returned."
     (with-temp-buffer
       (let ((rc (shell-command gitcmd (current-buffer) (current-buffer))))
         (if verbose
-            `(,rc . ,(buffer-string))
+            (cons rc (buffer-string))
           (if (eq 0 rc)
               "Git command done."
             (error (concat "Git command failed: " cmd " on " repo))))))))
